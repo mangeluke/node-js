@@ -1,0 +1,14 @@
+<%- include("header") %>
+<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<div class="container mt-5">
+  <h2>Editar Cliente</h2>
+  <form action="/update/<%= data.Id %>" method="POST">
+    <input type="text" name="Name" value="<%= data.Name %>" class="form-control mb-2" autofocus />
+    <input type="text" name="Address" value="<%= data.Address %>" class="form-control mb-2" />
+    <input type="text" name="Phone" value="<%= data.Phone %>" class="form-control mb-2" />
+    <button type="submit" class="btn btn-info">Actualizar Cliente</button>
+  </form>
+</div>
+
+<%- include("footer") %>

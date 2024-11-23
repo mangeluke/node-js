@@ -1,0 +1,120 @@
+<link href="https://bootswatch.com/5/lux/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="/estilos/estilos.css">
+
+<%- include("partials/header") %>
+<div class="col-md-5">
+  <div class="card-body">
+      <form action="/add" method="POST" class="mt-4">
+      <input type="text" name="Name" placeholder="Name" class="form-control mb-2" autofocus />
+      <input type="email" name="Address" placeholder="Address" class="form-control mb-2" />
+      <input type="text" name="Phone" placeholder="Phone" class="form-control mb-2" />
+      <button type="submit" class="btn btn-info">save customer</button>
+      </form>
+  </div>  
+
+  <!-- Fila para la tabla de clientes -->
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <h2>Lista de Clientes</h2>
+
+      <% if (data.length> 0) { %>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Actions</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% if (data) { %>
+                <% for(var i = 0; i < data.length; i++) { %>
+                    <tr>
+                        <td><%= (i + 1) %></td>
+                        <td><%= data[i].Name %></td>
+                        <td><%= data[i].Address %></td>
+                        <td><%= data[i].Phone %></td>
+                        <td class="d-flex gap-2">
+                         <!-- <a href="/delete/<%= data[i].Id %>" class="btn btn-danger"> Delete</a> -->
+                          <a href="#" onclick="confirmDelete('<%= data[i].Id %>')" class="btn btn-danger">Delete</a>
+                        
+ 
+                        
+                          <a href="#" onclick="confirmUpdate('<%= data[i].Id %>')" class="btn btn-success">Actualizar</a>
+                        </td>  
+
+                    </tr>
+                      <% } %> <% } %> 
+        </tbody>                 
+      </table> 
+      <% } else { %>
+        <p class="text-align: center;">no hay datos disponibles</p>
+        <% } %>
+    </div>
+   
+    
+    </div>  
+    </div>
+    </div>
+    
+<%- include("partials/footer") %>
+
+
+<script src="/js/validar.js"></script>
+<script src="/js/verificar.js"></script>
+<script>
+  // Función para validar los formularios
+  function validateForm(form) {
+    const Name = form.elements['Name'].value.trim();
+    const Address = form.elements['Address'].value.trim();
+    const Phone = form.elements['Phone'].value.trim();
+
+    // Validamos que todos los campos no estén vacíos
+    if (!N || !address || !phone) {
+      alert("Por favor, complete todos los campos.");
+      return false;
+    }
+
+    // Si todo está bien, se envía el formulario
+    return true;
+  }
+
+  // Función para manejar el formulario de agregar
+  const formAdd = document.querySelector('#form-add form');
+  formAdd.addEventListener('submit', function (e) {
+    if (!validateForm(this)) {
+      e.preventDefault(); // Evita que el formulario se envíe si la validación falla
+    }
+  });
+
+  // Función para manejar el formulario de actualizar
+  const formUpdate = document.querySelector('#form-update form');
+  formUpdate.addEventListener('submit', function (e) {
+    if (!validateForm(this)) {
+      e.preventDefault(); // Evita que el formulario se envíe si la validación falla
+    }
+  });
+
+  function editCustomer(Id, Name, Address, Phone) {
+    // Cambiar la visibilidad de los formularios
+    document.getElementById('form-add').style.display = 'none'; // Ocultamos el formulario de agregar
+    document.getElementById('form-update').style.display = 'block'; // Mostramos el formulario de actualizar
+
+    // Rellenar los valores del formulario de actualización con los datos del cliente
+    const formUpdate = document.querySelector('#form-update form');
+    formUpdate.action = '/update/' + Id; // Actualizamos la acción del formulario con el ID del cliente
+    formUpdate.elements['Name'].value = Name;
+    formUpdate.elements['Address'].value = Address;
+    formUpdate.elements['Phone'].value = Phone;
+  }
+</script>
+
+
+
+
+
+

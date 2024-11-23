@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    }
+    
+    /* Contenedor principal */
+    .col-md-5 {
+    max-width: 800px;
+    margin: 0 auto;
+    }
+    
+    
+    
+    /* Estilos para el formulario */
+    
+    
+    form input[type="text"] {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    }
+    
+    form input[type="email"] {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    padding: 10px;
+    width: 100%;
+    }
+    
+    form button {
+    background-color: #17a2b8;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    }
+    
+    form button:hover {
+    background-color: #138496;
+    }
+    
+    
+    
+    /* Estilos para la tabla de clientes */
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    }
+    
+    table th, table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+    }
+    
+    table th {
+    background-color: #f1f1f1;
+    font-weight: bold;
+    }
+    
+    table tr:nth-child(even) {
+    background-color: #f9f9f9;
+    }
+    
+    /* Estilos para los botones de acciones */
+    .btn {
+    padding: 8px 12px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: white;
+    }
+    
+    .btn-danger {
+    background-color: #dc3545;
+    }
+    
+    .btn-danger:hover {
+    background-color: #c82333;
+    }
+    
+    .btn-warning {
+    background-color: #ffc107;
+    }
+    
+    .btn-warning:hover {
+    background-color: #e0a800;
+    }
+    
+    .btn-success{
+      background-color: #00e038;
+    }
+    /* Espaciado entre el formulario y la tabla */
+    .mt-4 {
+    margin-top: 30px;
+    }
+    
+    /* Estilos para el título de la lista de clientes */
+    h2 {
+    font-size: 24px;
+    color: #343a40;
+    margin-bottom: 20px;
+    text-align: center;
+    }
+    
